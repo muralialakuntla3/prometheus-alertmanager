@@ -1,7 +1,9 @@
-rule_files:
-  - alert.rules.yml
+# alertmanger configuration
 alerting:
   alertmanagers:
   - static_configs:
     - targets:
       - 'localhost:9093'
+# alerts rulefile configuration
+rule_files:
+  - alert.rules.yml
