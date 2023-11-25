@@ -9,6 +9,16 @@ groups:
     annotations:
       summary: "Endpoint {{ $labels.instance }} down"
       description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minutes."
+      
+  - alert: InstanceUp
+    expr: up == 0
+    for: 1m
+    labels:
+      severity: good
+    annotations:
+      description: "{{ $labels.instance }} of job {{ $labels.job }} is up after being down."
+      summary: Endpoint {{ $labels.instance }} up
+
   
   - alert: HostOutOfMemory
     expr: node_memory_MemAvailable / node_memory_MemTotal * 100 < 25
